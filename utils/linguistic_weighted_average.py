@@ -2,7 +2,7 @@ from utils.centroid_it2fs import ekm
 import numpy as np
 
 def fwa(x, w, n=2):
-    """# Computing the FWA for trapezoidal T1 FSs described by five parameters (e,f,g,i,h)
+    """ Computing the FWA for trapezoidal T1 FSs described by five parameters (e,f,g,i,h)
     If the T1 FS has only four parameters, then its height is considered as 1
     
     x: T1 FSs for the subcriteria
