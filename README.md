@@ -10,9 +10,9 @@ The `eia` package contains the implementation of the enhanced interval approach 
 * `eia/eia_data_part.py`: This is the Data Part module which does the interval preprocessing. It can read word intervals from an excel file (`sample-data.xlsx` also provided) and will write results to `words.pickle` file. You can also extend it and use whatever input/output type you want.
 * `eia/eia_fuzzy_set_part.py`: This is the Fuzzy Set Part which will generate FOUs from the word intervals of the previous phase. FOUs are stored to `words_status.pickle` file. They contain "Shape (interior, lef/right-shoulder)", "Embedded Interval Type-1s" and "Type-2 Membership values" for each word. The membership values are saved in a 9-point shape like this:
 
-<div style="text-align: center">
+<p align="center">
 <img src="https://cloud.githubusercontent.com/assets/3812788/21205088/a242af88-c26f-11e6-9fb9-fc04216e334a.png" width="450" />
-</div>
+</p>
 
 ## Utilities
 The `utils` package contains some other tools and measures for IT2 FSs:
