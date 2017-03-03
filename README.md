@@ -1,5 +1,5 @@
 # Interval Type-2 Fuzzy Logic Stuff
-This repo has python implementation for some Interval Type 2 Fuzzy Set (IT2 FS) concepts. Each module contains `main` function which shows the usage of that module.
+This repo has python implementation for some Interval Type 2 Fuzzy Set (IT2 FS) concepts. Each module contains a `main` function which shows the usage of that module.
 #### Requirements:
 * python 3.4+
 * numpy
