@@ -17,7 +17,7 @@ The `eia` package contains the implementation of the enhanced interval approach 
 ## Utilities
 The `utils` package contains some other tools and measures for IT2 FSs:
 * `utils/centroid_it2fs.py`:
-  - `centroid_it2`: Computes the centroid of an IT2 FS. Returns centroid boundaries and and center of centroid.
+  - `centroid_it2`: Computes the centroid of an IT2 FS. Returns centroid boundaries and the center of centroid.
   - `ekm`: Implementation of the Enhanced KM algorithm.
 * `linguistic_weighted_average.py`:
   - `fwa`: Computing the Fuzzy Weighted Average for trapezoidal T1 FSs.
