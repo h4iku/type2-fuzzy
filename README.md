@@ -23,7 +23,7 @@ The `utils` package contains some other tools and measures for IT2 FSs:
   - `fwa`: Computing the Fuzzy Weighted Average for trapezoidal T1 FSs.
   - `lwa`: Computing the Linguistic Weighted Average for IT2 FSs.
 * `ranking_methods.py`:
-  - `centroid_rank`: Implement the center-of-centroid based ranking method.
+  - `centroid_rank`: Implementation of the center-of-centroid based ranking method.
 * `similarity_measures.py`:
   - `jaccard`: computing the Jaccard similarity measure between two IT2 FSs.
 
