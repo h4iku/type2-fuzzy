@@ -111,32 +111,20 @@ def reasonable_interval_processing(intervals):
 
 
 def main():
-    
+
     from openpyxl import load_workbook
     from openpyxl.utils.cell import column_index_from_string
     import pickle
-    
+
     # Open Excel file and get the active sheet
     wb = load_workbook('sample-data.xlsx')
-    ws = wb['Sheet1']
-    
+    ws = wb.active
+
     # A dictionary to keep the intervals of each word
-    words = {}
-    
-    for column in ws.columns:
-        for item in column:
-            # If the first row of the column is empty
-            if item.value is None:
-                break
-            # If the first row of the column is the word
-            elif type(item.value) is str:
-                current_word = item.value
-                words[current_word] = []
-            # Otherwise go for the lower and upper bound of the intervals
-            else:
-                words[current_word].append((item.value,
-                    ws.cell(row=item.row, column=column_index_from_string(item.column) + 1).value))
-                
+    words = {word.value : zip([l.value for l in lower], [u.value for u in upper])
+                for (word, *lower), (_, *upper) in zip(*[ws.columns]*2)}
+
+
     # Data Part
     for w, intervals in words.items():
         words[w] = [x for x in intervals if bad_data_check(x)]
@@ -149,7 +137,7 @@ def main():
     
     # Serializing words dictionary as a pickle file    
     with open('words.pickle', 'wb') as file:
-        pickle.dump(words, file)
+        pickle.dump(words, file, protocol=pickle.HIGHEST_PROTOCOL)
     
     
 if __name__ == '__main__': main()

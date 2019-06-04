@@ -110,7 +110,7 @@ def main():
         
     # Serializing words dictionary as a pickle file    
     with open('words_status.pickle', 'wb') as file:
-        pickle.dump(words_status, file)
+        pickle.dump(words_status, file, protocol=pickle.HIGHEST_PROTOCOL)
     
 if __name__ == '__main__':
     main()
