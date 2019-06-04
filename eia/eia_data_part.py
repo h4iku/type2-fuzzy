@@ -113,7 +113,6 @@ def reasonable_interval_processing(intervals):
 def main():
 
     from openpyxl import load_workbook
-    from openpyxl.utils.cell import column_index_from_string
     import pickle
 
     # Open Excel file and get the active sheet
