@@ -1,3 +1,6 @@
+# Environments
+.env*/
+
 # Eclipse and Pydev project settings
 .project
 .pydevproject
@@ -9,5 +12,3 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
-temp/
