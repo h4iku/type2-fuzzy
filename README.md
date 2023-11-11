@@ -1,4 +1,5 @@
-# Interval Type-2 Fuzzy Logic Stuff
+# Interval Type-2 Fuzzy Logic Stuff 
+[![Tests](https://github.com/h4iku/type2-fuzzy/actions/workflows/tests.yml/badge.svg)](https://github.com/h4iku/type2-fuzzy/actions/workflows/tests.yml)
 
 This repo has python implementation for some Interval Type 2 Fuzzy Set (IT2 FS) concepts. Each module contains a `main` function that shows the usage of that module.
 
