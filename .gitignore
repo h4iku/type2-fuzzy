@@ -1,5 +1,5 @@
 # Environments
-.env*/
+.venv*/
 
 # Eclipse and Pydev project settings
 .project
