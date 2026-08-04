@@ -12,10 +12,7 @@ def bad_data_processing(interval):
     left = interval[0]
     right = interval[1]
 
-    if lower_bound <= left < right <= upper_bound and (right - left) < upper_bound:
-        return True
-    else:
-        return False
+    return lower_bound <= left < right <= upper_bound and right - left < upper_bound
 
 
 def outlier_processing(intervals):

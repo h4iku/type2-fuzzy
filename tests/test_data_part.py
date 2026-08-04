@@ -1,7 +1,6 @@
 import pytest
 
-from eia.data_part import bad_data_processing
-from eia.data_part import outlier_processing
+from eia.data_part import bad_data_processing, outlier_processing
 
 valid_intervals = [
     ([0, 5], True),
