@@ -187,6 +187,17 @@ def reasonable_interval_processing(intervals):
     return reasonable_intervals
 
 
+def _read_intervals(ws):
+    return {
+        word.value: [
+            (l.value, u.value)
+            for l, u in zip(lower, upper)
+            if l.value is not None and u.value is not None
+        ]
+        for (word, *lower), (_, *upper) in zip(*[ws.columns] * 2)
+    }
+
+
 def process_data_part(excel_workbook):
     import json
 
@@ -197,13 +208,7 @@ def process_data_part(excel_workbook):
     ws = wb.active
 
     # A dictionary to keep the intervals of each word
-    words = {
-        word.value: zip(
-            [l.value for l in lower if l.value is not None],
-            [u.value for u in upper if u.value is not None],
-        )
-        for (word, *lower), (_, *upper) in zip(*[ws.columns] * 2)
-    }
+    words = _read_intervals(ws)
 
     # Data Part
     for w, intervals in words.items():

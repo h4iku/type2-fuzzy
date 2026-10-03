@@ -1,6 +1,8 @@
 import pytest
+from openpyxl import Workbook
 
 from eia.data_part import (
+    _read_intervals,
     bad_data_processing,
     outlier_processing,
     tolerance_limit_processing,
@@ -55,3 +57,13 @@ def test_tolerance_limit_respects_interval_length_domain():
     intervals = [(0.1, 0.6), (0.1, 2.1), (0.1, 9.6), (0.1, 9.6)]
 
     assert tolerance_limit_processing(intervals) == intervals[1:]
+
+
+def test_read_intervals_keeps_endpoints_from_the_same_row():
+    workbook = Workbook()
+    worksheet = workbook.active
+    worksheet.append(["word", "example"])
+    for row in [(1, 2), (1, 2), (None, 9), (1, 2), (1, 2)]:
+        worksheet.append(row)
+
+    assert _read_intervals(worksheet) == {"word": [(1, 2)] * 4}
