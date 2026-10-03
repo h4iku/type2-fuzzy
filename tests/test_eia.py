@@ -23,10 +23,11 @@ def test_eia():
         expected_status = json.load(file)
     output_status = process_fuzzy_set_part()
 
-    for (word1, status1), (word2, status2) in zip(
-        output_status.items(), expected_status.items()
-    ):
-        assert status1["shape"] == status2["shape"]
-        assert [*status1["MF"][0], *status1["MF"][1]] == pytest.approx(
-            [*status2["MF"][0], *status2["MF"][1]]
+    assert output_status.keys() == expected_status.keys()
+
+    for word, status in expected_status.items():
+        output = output_status[word]
+        assert output["shape"] == status["shape"]
+        assert [*output["MF"][0], *output["MF"][1]] == pytest.approx(
+            [*status["MF"][0], *status["MF"][1]]
         )
