@@ -13,6 +13,9 @@ def mg(x, xmf, umf=None):
 
     if umf is None:
         umf = [0, 1, 1, 0]
+    elif len(xmf) != len(umf):
+        raise ValueError("xmf and umf must have the same length")
+
     items = [item for item in sorted(zip(xmf, umf))]
     xmf = [i[0] for i in items]
     umf = [i[1] for i in items]
