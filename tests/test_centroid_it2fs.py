@@ -19,3 +19,15 @@ def test_ekm_zero_lower_weights_ignore_points_without_upper_support(
 def test_mg_rejects_mismatched_knot_and_grade_lengths():
     with pytest.raises(ValueError, match="same length"):
         mg([0.5], [0, 1, 2, 3], [0, 1])
+
+
+@pytest.mark.parametrize(
+    "x_point, w_lower, w_upper",
+    [
+        ([1, 2], [0], [1, 1]),
+        ([1, 2], [0, 0], [1]),
+    ],
+)
+def test_ekm_rejects_mismatched_point_and_weight_lengths(x_point, w_lower, w_upper):
+    with pytest.raises(ValueError, match="same length"):
+        ekm(x_point, w_lower, w_upper, 1)

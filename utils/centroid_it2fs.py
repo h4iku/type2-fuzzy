@@ -42,13 +42,14 @@ def ekm(x_point, w_lower, w_upper, max_flag):
     max_flag: 1 to output the maximum; -1 to output the minimum
     """
 
+    if not (len(x_point) == len(w_lower) == len(w_upper)):
+        raise ValueError("x_point, w_lower, and w_upper must have the same length")
+
     if max(w_upper) == 0 or max(x_point) == 0:
         return 0
 
     if max(w_lower) == 0:
-        supported_x = [
-            x for x, upper in zip(x_point, w_upper) if upper != 0
-        ]
+        supported_x = [x for x, upper in zip(x_point, w_upper) if upper != 0]
         if max_flag > 0:
             return max(supported_x)
         else:
