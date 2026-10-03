@@ -115,7 +115,7 @@ def tolerance_limit_processing(intervals):
     std_len = np.std(len_values, ddof=1)
 
     if std_len != 0:
-        k = min(k, mean_len / std_len, (100 - mean_len) / std_len)
+        k = min(k, mean_len / std_len, (upper_bound - mean_len) / std_len)
 
     len_filtered = [
         x if (mean_len - k * std_len) <= x <= (mean_len + k * std_len) else None

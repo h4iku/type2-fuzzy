@@ -1,6 +1,10 @@
 import pytest
 
-from eia.data_part import bad_data_processing, outlier_processing
+from eia.data_part import (
+    bad_data_processing,
+    outlier_processing,
+    tolerance_limit_processing,
+)
 
 valid_intervals = [
     ([0, 5], True),
@@ -45,3 +49,9 @@ test_cases = [
 def test_outlier_processing(input, expected):
     output = outlier_processing(input)
     assert output == expected
+
+
+def test_tolerance_limit_respects_interval_length_domain():
+    intervals = [(0.1, 0.6), (0.1, 2.1), (0.1, 9.6), (0.1, 9.6)]
+
+    assert tolerance_limit_processing(intervals) == intervals[1:]
