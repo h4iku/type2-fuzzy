@@ -43,10 +43,13 @@ def ekm(x_point, w_lower, w_upper, max_flag):
         return 0
 
     if max(w_lower) == 0:
+        supported_x = [
+            x for x, upper in zip(x_point, w_upper) if upper != 0
+        ]
         if max_flag > 0:
-            return max(x_point)
+            return max(supported_x)
         else:
-            return min(x_point)
+            return min(supported_x)
 
     if len(x_point) == 1:
         return x_point[0]
