@@ -21,6 +21,15 @@ def test_mg_rejects_mismatched_knot_and_grade_lengths():
         mg([0.5], [0, 1, 2, 3], [0, 1])
 
 
+def test_mg_interpolates_membership_and_returns_zero_outside_support():
+    x = [-1, 0, 0.5, 1, 2, 2.5, 3, 4]
+
+    grades = mg(x, [0, 1, 2, 3])
+
+    assert len(grades) == len(x)
+    assert grades == pytest.approx([0, 0, 0.5, 1, 1, 0.5, 0, 0])
+
+
 @pytest.mark.parametrize(
     "x_point, w_lower, w_upper",
     [
