@@ -31,3 +31,9 @@ def test_eia():
         assert [*output["MF"][0], *output["MF"][1]] == pytest.approx(
             [*status["MF"][0], *status["MF"][1]]
         )
+        assert len(output["ET1FS"]) == len(status["ET1FS"])
+        assert [
+            coordinate for interval in output["ET1FS"] for coordinate in interval
+        ] == pytest.approx(
+            [coordinate for interval in status["ET1FS"] for coordinate in interval]
+        )
