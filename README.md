@@ -14,6 +14,10 @@ The `eia` package contains the implementation of the [enhanced interval approach
 <img src="https://cloud.githubusercontent.com/assets/3812788/21205088/a242af88-c26f-11e6-9fb9-fc04216e334a.png" width="450" />
 </p>
 
+* `eia/plot_it2f.py`: Plots the generated word status membership functions, ordered by centroid.
+
+![Word status plots](plot.svg)
+
 ## Utilities
 
 The `utils` package contains some other tools and measures for IT2 FSs:

@@ -1,6 +1,10 @@
 import itertools
+import json
+from pathlib import Path
 
 import numpy as np
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 lower_bound = 0
 upper_bound = 10
@@ -199,12 +203,14 @@ def _read_intervals(ws):
 
 
 def process_data_part(excel_workbook):
-    import json
-
     from openpyxl import load_workbook
 
+    workbook_path = Path(excel_workbook)
+    if not workbook_path.is_absolute():
+        workbook_path = PROJECT_ROOT / workbook_path
+
     # Open Excel file and get the active sheet
-    wb = load_workbook(excel_workbook)
+    wb = load_workbook(workbook_path)
     ws = wb.active
 
     # A dictionary to keep the intervals of each word
@@ -221,7 +227,7 @@ def process_data_part(excel_workbook):
         words[w] = reasonable_interval_processing(intervals)
 
     # Serializing words dictionary as a json file
-    with open("words.json", "w") as file:
+    with (PROJECT_ROOT / "words.json").open("w", encoding="utf-8") as file:
         json.dump(words, file)
 
     return words

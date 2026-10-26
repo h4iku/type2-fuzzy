@@ -1,4 +1,9 @@
+import json
+from pathlib import Path
+
 import numpy as np
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 lower_bound = 0
 upper_bound = 10
@@ -165,10 +170,8 @@ def fuzzy_part(intervals):
 
 
 def process_fuzzy_set_part():
-    import json
-
     # Reading the preprocessed words dictionary from the json file
-    with open("words.json") as file:
+    with (PROJECT_ROOT / "words.json").open(encoding="utf-8") as file:
         words = json.load(file)
     words_status = {}
 
@@ -177,7 +180,7 @@ def process_fuzzy_set_part():
             words_status[word] = fuzzy_part(intervals)
 
     # Serializing words dictionary as a json file
-    with open("words_status.json", "w") as file:
+    with (PROJECT_ROOT / "words_status.json").open("w", encoding="utf-8") as file:
         json.dump(words_status, file)
 
     return words_status
