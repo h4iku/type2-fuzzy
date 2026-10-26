@@ -8,7 +8,7 @@ This repo has python implementation for some Interval Type 2 Fuzzy Set (IT2 FS) 
 The `eia` package contains the implementation of the [enhanced interval approach](https://ieeexplore.ieee.org/abstract/document/6086759) for encoding words into interval type-2 fuzzy sets. It both contains the "Data Part" and the "Fuzzy Set Part":
 
 * `eia/data_part.py`: This is the Data Part module which does the interval preprocessing. It can read word intervals from an Excel file (`sample-data.xlsx` also provided) and will write results to `words.json` file. You can also extend it and use whatever input/output type you want.
-* `eia/fuzzy_set_part.py`: This is the Fuzzy Set Part which will generate FOUs from the word intervals of the previous phase. FOUs are stored to `words_status.json` file. They contain "Shape (interior, left/right-shoulder)", "Embedded Interval Type-1s" and "Type-2 Membership values" for each word. The membership values are saved in a 9-point shape like this:
+* `eia/fuzzy_set_part.py`: This is the Fuzzy Set Part which will generate FOUs from the word intervals of the previous phase. FOUs are stored to `words_status.json` file. Each word record contains its shape (interior, left/right-shoulder), embedded Interval Type-1s (`ET1FS`), and type-2 membership parameters (`MF`). The membership values are saved in a 9-point shape but are separated into two lists of `[lower, upper]` values:
 
 <p align="center">
 <img src="https://cloud.githubusercontent.com/assets/3812788/21205088/a242af88-c26f-11e6-9fb9-fc04216e334a.png" width="450" />
