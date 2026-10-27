@@ -18,6 +18,8 @@ def fwa(x, w, n=2):
 
     if n < 2:
         raise ValueError("n must be at least 2")
+    if len(x) != len(w):
+        raise ValueError("x and w must have the same number of sets")
 
     x = [list(fs) for fs in x]
     w = [list(fs) for fs in w]
@@ -73,6 +75,9 @@ def lwa(x, w, n=2):
     UMFYy and UMFYmu: y- and mu-coordinates of the UMF of the LWA
     LMFYy and LMFYmu: y- and mu-coordinates of the LMF of the LWA
     """
+
+    if len(x) != len(w):
+        raise ValueError("x and w must have the same number of sets")
 
     x = [list(fs) for fs in x]
     w = [list(fs) for fs in w]

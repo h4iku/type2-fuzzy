@@ -19,6 +19,11 @@ def test_fwa_requires_at_least_two_alpha_cuts():
         fwa([[0, 1, 2, 3]], [[1, 1, 1, 1]], n=1)
 
 
+def test_fwa_rejects_different_numbers_of_inputs_and_weights():
+    with pytest.raises(ValueError, match="same number of sets"):
+        fwa([[0, 1, 2, 3]], [[1, 1, 1, 1], [1, 1, 1, 1]])
+
+
 def test_fwa_does_not_modify_inputs_when_adding_default_heights():
     x = [[0, 1, 2, 3]]
     w = [[1, 1, 1, 1]]
@@ -37,3 +42,14 @@ def test_lwa_does_not_modify_inputs_when_adding_default_heights():
 
     assert x == [[0, 1, 2, 3, 0, 1, 2, 3]]
     assert w == [[0, 1, 1, 0, 0, 1, 1, 0]]
+
+
+def test_lwa_rejects_different_numbers_of_inputs_and_weights():
+    with pytest.raises(ValueError, match="same number of sets"):
+        lwa(
+            [[0, 1, 2, 3, 0, 1, 2, 3]],
+            [
+                [0, 1, 1, 0, 0, 1, 1, 0],
+                [0, 1, 1, 0, 0, 1, 1, 0],
+            ],
+        )
