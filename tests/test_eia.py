@@ -28,8 +28,10 @@ def test_eia():
     for word, status in expected_status.items():
         output = output_status[word]
         assert output["shape"] == status["shape"]
-        assert [*output["MF"][0], *output["MF"][1]] == pytest.approx(
-            [*status["MF"][0], *status["MF"][1]]
+        lower, upper = output["MF"]
+        expected_lower, expected_upper = status["MF"]
+        assert [*lower, *upper] == pytest.approx(
+            [*expected_lower, *expected_upper]
         )
         assert len(output["ET1FS"]) == len(status["ET1FS"])
         assert [
@@ -37,3 +39,9 @@ def test_eia():
         ] == pytest.approx(
             [coordinate for interval in status["ET1FS"] for coordinate in interval]
         )
+
+        assert 0 <= lower[4] <= 1
+        assert all(0 <= point <= 10 for point in lower[:4] + upper)
+        assert lower[:4] == sorted(lower[:4])
+        assert upper == sorted(upper)
+        assert all(0 <= left < right <= 10 for left, right in output["ET1FS"])
