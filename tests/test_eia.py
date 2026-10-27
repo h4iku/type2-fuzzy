@@ -30,9 +30,7 @@ def test_eia():
         assert output["shape"] == status["shape"]
         lower, upper = output["MF"]
         expected_lower, expected_upper = status["MF"]
-        assert [*lower, *upper] == pytest.approx(
-            [*expected_lower, *expected_upper]
-        )
+        assert [*lower, *upper] == pytest.approx([*expected_lower, *expected_upper])
         assert len(output["ET1FS"]) == len(status["ET1FS"])
         assert [
             coordinate for interval in output["ET1FS"] for coordinate in interval

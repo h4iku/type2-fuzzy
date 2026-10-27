@@ -60,9 +60,7 @@ def test_ekm_returns_weighted_mean_for_crisp_memberships():
         ([2, 5, 9], [0.1, 0.4, 0.3], [0.6, 0.8, 0.9]),
     ],
 )
-def test_ekm_centroid_bounds_are_ordered_and_within_support(
-    x_point, w_lower, w_upper
-):
+def test_ekm_centroid_bounds_are_ordered_and_within_support(x_point, w_lower, w_upper):
     left = ekm(x_point, w_lower, w_upper, -1)
     right = ekm(x_point, w_lower, w_upper, 1)
 
