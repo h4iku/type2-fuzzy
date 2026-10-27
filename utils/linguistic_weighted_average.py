@@ -16,6 +16,9 @@ def fwa(x, w, n=2):
     y- and mu-coordinates of the FWA.
     """
 
+    x = [list(fs) for fs in x]
+    w = [list(fs) for fs in w]
+
     # If the T1 FS has only four parameters, then its height is considered as 1
     for fs in x:
         if len(fs) == 4:
@@ -67,6 +70,9 @@ def lwa(x, w, n=2):
     UMFYy and UMFYmu: y- and mu-coordinates of the UMF of the LWA
     LMFYy and LMFYmu: y- and mu-coordinates of the LMF of the LWA
     """
+
+    x = [list(fs) for fs in x]
+    w = [list(fs) for fs in w]
 
     # If the IT2 FS has only eight parameters, then its height is considered as 1
     for fs in x:

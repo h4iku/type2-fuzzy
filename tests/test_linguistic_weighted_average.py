@@ -1,6 +1,6 @@
 import pytest
 
-from utils.linguistic_weighted_average import fwa
+from utils.linguistic_weighted_average import fwa, lwa
 
 
 def test_fwa_with_one_input_and_unit_weight_preserves_trapezoid():
@@ -12,3 +12,23 @@ def test_fwa_with_one_input_and_unit_weight_preserves_trapezoid():
     assert result == pytest.approx([0, 1, 2, 3, 1])
     assert y_coordinates == pytest.approx([0, 1, 2, 3])
     assert mu_coordinates == pytest.approx([0, 1, 1, 0])
+
+
+def test_fwa_does_not_modify_inputs_when_adding_default_heights():
+    x = [[0, 1, 2, 3]]
+    w = [[1, 1, 1, 1]]
+
+    fwa(x, w)
+
+    assert x == [[0, 1, 2, 3]]
+    assert w == [[1, 1, 1, 1]]
+
+
+def test_lwa_does_not_modify_inputs_when_adding_default_heights():
+    x = [[0, 1, 2, 3, 0, 1, 2, 3]]
+    w = [[0, 1, 1, 0, 0, 1, 1, 0]]
+
+    lwa(x, w)
+
+    assert x == [[0, 1, 2, 3, 0, 1, 2, 3]]
+    assert w == [[0, 1, 1, 0, 0, 1, 1, 0]]
