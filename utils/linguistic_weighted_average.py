@@ -16,6 +16,9 @@ def fwa(x, w, n=2):
     y- and mu-coordinates of the FWA.
     """
 
+    if n < 2:
+        raise ValueError("n must be at least 2")
+
     x = [list(fs) for fs in x]
     w = [list(fs) for fs in w]
 
