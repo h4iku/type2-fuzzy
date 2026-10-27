@@ -14,6 +14,18 @@ def test_fwa_with_one_input_and_unit_weight_preserves_trapezoid():
     assert mu_coordinates == pytest.approx([0, 1, 1, 0])
 
 
+def test_fwa_returns_two_coordinate_samples_per_alpha_cut():
+    _, y_coordinates, mu_coordinates = fwa(
+        [[0, 1, 2, 3]],
+        [[1, 1, 1, 1]],
+        n=3,
+    )
+
+    assert len(y_coordinates) == 2 * 3
+    assert len(mu_coordinates) == 2 * 3
+    assert mu_coordinates == pytest.approx([0, 0.5, 1, 1, 0.5, 0])
+
+
 def test_fwa_requires_at_least_two_alpha_cuts():
     with pytest.raises(ValueError, match="at least 2"):
         fwa([[0, 1, 2, 3]], [[1, 1, 1, 1]], n=1)
