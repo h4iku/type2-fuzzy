@@ -56,6 +56,18 @@ def test_lwa_does_not_modify_inputs_when_adding_default_heights():
     assert w == [[0, 1, 1, 0, 0, 1, 1, 0]]
 
 
+def test_lwa_returns_nine_parameters_and_two_coordinate_curves():
+    result, lower_y, lower_mu, upper_y, upper_mu = lwa(
+        [[0, 1, 2, 3, 0, 1, 2, 3]],
+        [[0, 1, 1, 0, 0, 1, 1, 0]],
+        n=3,
+    )
+
+    assert len(result) == 9
+    assert len(lower_y) == len(lower_mu) == 2 * 3
+    assert len(upper_y) == len(upper_mu) == 2 * 3
+
+
 def test_lwa_rejects_different_numbers_of_inputs_and_weights():
     with pytest.raises(ValueError, match="same number of sets"):
         lwa(
